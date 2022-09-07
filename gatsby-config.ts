@@ -1,5 +1,8 @@
 import type { GatsbyConfig } from "gatsby"
 
+
+const INTERCOM_APP_ID = "i9m4o3sh";
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `gat-story-app`,
@@ -17,6 +20,12 @@ const config: GatsbyConfig = {
         homeSlug: 'home',
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
       }
+    },
+    {
+      resolve: `gatsby-plugin-intercom`,
+      options: {
+        appId: INTERCOM_APP_ID,
+      },
     },
   ],
 }

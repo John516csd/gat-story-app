@@ -18,11 +18,13 @@
   "dependencies": {
     "axios": "^0.27.2",
     "gatsby": "^4.21.1",
+    "gatsby-plugin-intercom": "^0.1.4",
     "gatsby-source-filesystem": "^4.21.1",
     "gatsby-source-storyblok": "^4.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "storyblok-js-client": "^4.5.6"
+    "storyblok-js-client": "^4.5.6",
+    "web-vitals": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

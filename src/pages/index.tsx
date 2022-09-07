@@ -3,6 +3,7 @@ import type { HeadFC } from "gatsby"
 import { useStoryblokState, StoryblokComponent, SbBlokData, storyblokEditable } from 'gatsby-source-storyblok'
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
+import {getLCP} from 'web-vitals'
 
 const pageStyles = {
   color: "#232129",
@@ -19,6 +20,7 @@ interface IProp {
 }
 
 const IndexPage = ({ data }: IProp) => {
+  getLCP(console.log);
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
   console.log("🚀 ~ file: index.tsx ~ line 24 ~ IndexPage ~ story", story)
@@ -30,7 +32,7 @@ const IndexPage = ({ data }: IProp) => {
   return (
     <Layout>
       <h1 style={headingStyles}>
-        Congratulations
+        Congratulations!!!
       </h1>
       <div {...storyblokEditable(story.content)}>
         <p>{story.name}</p>
