@@ -2,14 +2,9 @@ import * as React from "react"
 import type { HeadFC } from "gatsby"
 import { useStoryblokState, StoryblokComponent, SbBlokData, storyblokEditable } from 'gatsby-source-storyblok'
 import { graphql } from 'gatsby'
-import Layout from "../components/layout"
-import {getLCP} from 'web-vitals'
+import Layout from "@layout/index"
+import { Text } from '@chakra-ui/react'
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
@@ -20,24 +15,12 @@ interface IProp {
 }
 
 const IndexPage = ({ data }: IProp) => {
-  getLCP(console.log);
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
-  console.log("🚀 ~ file: index.tsx ~ line 24 ~ IndexPage ~ story", story)
-
-  const components = story.content.body.map((blok: SbBlokData) => {
-    return (<StoryblokComponent blok={blok} key={blok._uid} />)
-  })
 
   return (
     <Layout>
-      <h1 style={headingStyles}>
-        Congratulations!!!
-      </h1>
-      <div {...storyblokEditable(story.content)}>
-        <p>{story.name}</p>
-        {components}
-      </div>
+      <Text as="h1">YBlog</Text>
     </Layout>
   )
 }

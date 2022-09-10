@@ -10,10 +10,6 @@ interface IProp {
 }
 
 const App: React.FC<IProp> = ({ data, location }) => {
-  // console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 8 ~ data", data)
-  // const content = JSON.parse(data.storyblokEntry.content);
-  // console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 15 ~ content", content)
-  // console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 11 ~ content", content)
   const story = useStoryblok(data.storyblokEntry, location);
   console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 17 ~ story", story)
   return <>storyblokEntry</>

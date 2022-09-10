@@ -27,6 +27,19 @@ const config: GatsbyConfig = {
         appId: INTERCOM_APP_ID,
       },
     },
+    {
+      resolve: "@chakra-ui/gatsby-plugin",
+      options: {
+        resetCSS: true,
+        portalZIndex: 40,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-less",
+      options: {
+        javascriptEnabled: true,
+      },
+    }
   ],
 }
 
