@@ -3,24 +3,25 @@ import type { HeadFC } from "gatsby"
 import { useStoryblokState, StoryblokComponent, SbBlokData, storyblokEditable } from 'gatsby-source-storyblok'
 import { graphql } from 'gatsby'
 import Layout from "@layout/index"
-import { Text } from '@chakra-ui/react'
-
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+import { Button, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
 interface IProp {
   data: any
 }
 
 const IndexPage = ({ data }: IProp) => {
+  const color = useColorModeValue('gray.900', 'white');
   let story = data.storyblokEntry;
   story = useStoryblokState(story);
 
   return (
-    <Layout>
-      <Text as="h1">YBlog</Text>
+    <Layout isNewStyle>
+      <Text
+        as="h1"
+        color={color}
+        textAlign="center"
+      >
+        YBlog
+      </Text>
     </Layout>
   )
 }

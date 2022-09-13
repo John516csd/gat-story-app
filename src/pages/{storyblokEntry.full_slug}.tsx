@@ -11,7 +11,6 @@ interface IProp {
 
 const App: React.FC<IProp> = ({ data, location }) => {
   const story = useStoryblok(data.storyblokEntry, location);
-  console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 17 ~ story", story)
   return <>storyblokEntry</>
 }
 
