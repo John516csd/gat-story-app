@@ -9,6 +9,7 @@ interface IProp {
 }
 
 const IndexPage = ({ data }: IProp) => {
+  console.log("🚀 ~ file: index.tsx ~ line 12 ~ IndexPage ~ data", data)
   const color = useColorModeValue('gray.900', 'white');
   let story = data.storyblokEntry;
   story = useStoryblokState(story);

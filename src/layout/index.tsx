@@ -11,6 +11,7 @@ import Header from './Header'
 const { useState, useEffect } = React;
 
 import yBlogTheme from "../assets/theme"
+import Footer from "./Footer";
 
 interface IProps {
     children: React.ReactNode;
@@ -107,7 +108,7 @@ const Layout: React.FC<IProps> = ({
                     color={color}
                     boxShadow="0 4px 8px 0 rgb(0 0 0 / 10%)"
                     background={bg}
-                    backdropFilter="blur(64px)"
+                    backdropFilter="blur(5px)"
                 >
                     <IconButton
                         icon={<ToggleIcon />}
@@ -123,7 +124,7 @@ const Layout: React.FC<IProps> = ({
                     </Box>
                     {bottomLayout}
                 </Box>
-                {/* {showFooter && <Footer paddingTop={footerPaddingTop} />} */}
+                {showFooter && <Footer paddingTop={footerPaddingTop} />}
             </Box>
         </ChakraProvider>
     );
