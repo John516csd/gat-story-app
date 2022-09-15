@@ -30,9 +30,13 @@ const IndexPage = ({ data }: IProp) => {
       >
         <Center
           flex="1"
+          border="1px solid #f2f2f2"
           flexDir="column"
+          borderRadius="12px"
+          p="12px"
+          boxShadow="0 30px 60px -10px rgb(0 0 0 / 22%), 0 18px 36px -18px rgb(0 0 0 / 25%)"
         >
-          <Image h="full" src={IndexPageHero} borderRadius="12px" />
+          <Image h="full" w="full" objectFit="fill" src={IndexPageHero} borderRadius="12px"/>
         </Center>
         <Center
           flex="1"
@@ -40,7 +44,16 @@ const IndexPage = ({ data }: IProp) => {
           flexDir="column"
           justifyContent="flex-start"
         >
-          <Center w="full" border="1px solid #f2f2f2" p="12px" flexDir="column" borderRadius="12px" gap="12px">
+          <Center
+            w="full"
+            h="full"
+            border="1px solid #f2f2f2"
+            p="12px"
+            flexDir="column"
+            borderRadius="12px"
+            gap="12px"
+            boxShadow="0 30px 60px -10px rgb(0 0 0 / 22%), 0 18px 36px -18px rgb(0 0 0 / 25%)"
+          >
             <Text as="h2" textAlign="center">About me</Text>
             <Text as="h3">💼 Mind Cruiser / Front End</Text>
             <Text as="h3">📧 chenhao.yan@airgram.io</Text>
@@ -58,7 +71,9 @@ const IndexPage = ({ data }: IProp) => {
           </Center>
         </Center>
       </Flex>
-
+      <Center w="full" my="56px">
+        <Flex w="50%" h="64px" borderRadius="16px" filter="5px" boxShadow="0 30px 60px -10px rgb(0 0 0 / 22%), 0 18px 36px -18px rgb(0 0 0 / 25%)"></Flex>
+      </Center>
     </Layout>
   )
 }
