@@ -4,7 +4,16 @@ import { Box, Center, Flex, IconButton, Text } from '@chakra-ui/react';
 import * as React from 'react';
 
 const IndexPage = () => {
-    return <Center columnGap="64px">
+    return <Center
+        columnGap={{
+            base: "24px",
+            sm: "24px",
+            md: "40px",
+            lg: "64px",
+            xl: "64px",
+            '2xl': "64px"
+        }}
+    >
         <GatsbyLink to="/">
             <Center>
                 <Text as="h4">

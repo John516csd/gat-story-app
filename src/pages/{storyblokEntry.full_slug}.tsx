@@ -38,7 +38,7 @@ const App: React.FC<IProp> = ({ data, location }) => {
 
   return <Layout>
     <Center>
-      <Image src={'https:' + cover} />
+      <Image src={'https:' + cover} w="full" borderRadius="12px" />
     </Center>
     <Center w="full">
       <Box p="24px" className="cms-html" color={color} dangerouslySetInnerHTML={{
