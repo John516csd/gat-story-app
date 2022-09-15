@@ -16,7 +16,7 @@ interface IProp {
 export const Head = () => {
   return (
     <Header title="Blog" description="this is a blog page">
-      <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="yanchenhao.com"></script>
+      <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="gatstoryappmaster.gatsbyjs.io"></script>
     </Header>
   )
 }
