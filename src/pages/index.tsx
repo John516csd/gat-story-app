@@ -36,14 +36,6 @@ const IndexPage = ({ data }: IProp) => {
         </Center>
         <Center
           flex="1"
-          textAlign={{
-            base: "center",
-            sm: "center",
-            md: "start",
-            lg: "start",
-            xl: "start",
-            "2xl": "start"
-          }}
           px="24px"
           flexDir="column"
           justifyContent="flex-start"
