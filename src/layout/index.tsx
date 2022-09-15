@@ -6,9 +6,11 @@ import {
     useColorModeValue, Button,
     IconButton,
 } from "@chakra-ui/react";
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
+import { GatsbyLink } from "@/components/common/index";
+import { SunIcon, MoonIcon, AtSignIcon } from '@chakra-ui/icons'
 import Header from './Header'
 const { useState, useEffect } = React;
+import Nav from './Header/nav'
 
 import yBlogTheme from "../assets/theme"
 import Footer from "./Footer";
@@ -21,6 +23,7 @@ interface IProps {
     footerPaddingTop?: string | number;
     minW?: string;
     maxW?: string;
+    minH?: string;
     px?: string;
     margin?: string;
     isNewStyle?: boolean;
@@ -76,7 +79,8 @@ const Layout: React.FC<IProps> = ({
         xl: "80px",
         "2xl": "160px",
     },
-    margin = "auto"
+    margin = "auto",
+    minH = "100vh"
 }) => {
 
     const pt = getPaddingTop(isNewStyle);
@@ -109,7 +113,10 @@ const Layout: React.FC<IProps> = ({
                     boxShadow="0 4px 8px 0 rgb(0 0 0 / 10%)"
                     background={bg}
                     backdropFilter="blur(5px)"
+                    display="flex"
+                    justifyContent="space-between"
                 >
+                    <Nav />
                     <IconButton
                         icon={<ToggleIcon />}
                         aria-label={"toggle"}
@@ -119,7 +126,7 @@ const Layout: React.FC<IProps> = ({
                     />
                 </Box>
                 <Box px={px}>
-                    <Box pt={pt} minW={minW} maxW={maxW} margin={margin}>
+                    <Box pt={pt} minW={minW} maxW={maxW} minH={minH} margin={margin}>
                         {children}
                     </Box>
                     {bottomLayout}
