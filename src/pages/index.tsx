@@ -48,7 +48,7 @@ const IndexPage = ({ data }: IProp) => {
           flexDir="column"
           justifyContent="flex-start"
         >
-          <Center w="full" border="1px solid #f2f2f2" p="12px" flexDir="column" borderRadius="12px">
+          <Center w="full" border="1px solid #f2f2f2" p="12px" flexDir="column" borderRadius="12px" gap="12px">
             <Text as="h2" textAlign="center">About me</Text>
             <Text as="h3">💼 Mind Cruiser / Front End</Text>
             <Text as="h3">📧 chenhao.yan@airgram.io</Text>
