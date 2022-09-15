@@ -16,7 +16,7 @@ interface IProp {
 export const Head = () => {
   return (
     <Header title="Blog" description="this is a blog page">
-      <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="gatstoryappmaster.gatsbyjs.io"></script>
+      <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="yanchenhaoblog.gatsbyjs.io"></script>
     </Header>
   )
 }
@@ -38,7 +38,7 @@ const App: React.FC<IProp> = ({ data, location }) => {
 
   return <Layout>
     <Center>
-      <Image src={'https:' + cover}/>
+      <Image src={'https:' + cover} />
     </Center>
     <Center w="full">
       <Box p="24px" className="cms-html" color={color} dangerouslySetInnerHTML={{
