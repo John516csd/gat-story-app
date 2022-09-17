@@ -8,7 +8,6 @@ import {
 } from "@chakra-ui/react";
 import { GatsbyLink } from "@/components/common/index";
 import { SunIcon, MoonIcon, AtSignIcon } from '@chakra-ui/icons'
-import GoogleLogin from 'react-google-one-tap-login'
 import Header from './Header'
 const { useState, useEffect } = React;
 import Nav from './Header/nav'
@@ -94,30 +93,11 @@ const Layout: React.FC<IProps> = ({
     if(typeof window !== 'undefined') {
         googleLoginRes = window.localStorage.getItem('google-login') || undefined;
     }
-    console.log('google-login', JSON.parse(googleLoginRes));
     const [isLogin, setIsLogin] = useState(typeof googleLoginRes !== 'undefined');
 
     return (
         <ChakraProvider resetCSS theme={yBlogTheme}>
             <Box>
-                {
-                    !isLogin && <GoogleLogin
-                        onError={(err) => {
-                            console.log('err', err);
-                        }}
-                        onSuccess={(res) => {
-                            console.log('res', res);
-                            setIsLogin(true);
-                            if (typeof window !== 'undefined') {
-                                window.localStorage.setItem('google-login', JSON.stringify(res));
-                            }
-                        }}
-                        googleAccountConfigs={{
-                            client_id: "607512424005-ulmn4n12r7a5cq4v0oeggpb2k1najbj3.apps.googleusercontent.com",
-                            cancel_on_tap_outside: false,
-                            auto_select: true,
-                        }}
-                    />}
                 {topLayout}
                 <Box
                     top="0"

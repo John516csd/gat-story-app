@@ -25,8 +25,10 @@ export default function useStoryblok(originalStory: any, location: string) {
 
       storyblokInstance.on(["published", "change"], (event) => {
         // reloade project on save an publish
-        // @ts-ignore
-        window.location.reload(true);
+        if (typeof window !== "undefined") {
+          // @ts-ignore
+          window.location.reload(true);
+        }
       });
 
       storyblokInstance.on(["input"], (event) => {
