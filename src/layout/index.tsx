@@ -94,7 +94,7 @@ const Layout: React.FC<IProps> = ({
     if(typeof window !== 'undefined') {
         googleLoginRes = window.localStorage.getItem('google-login') || undefined;
     }
-    console.log('google-login', googleLoginRes);
+    console.log('google-login', JSON.parse(googleLoginRes));
     const [isLogin, setIsLogin] = useState(typeof googleLoginRes !== 'undefined');
 
     return (
