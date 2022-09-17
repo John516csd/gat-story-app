@@ -4,8 +4,8 @@ import Header from '@components/head'
 import { useStoryblokState, StoryblokComponent, SbBlokData, storyblokEditable } from 'gatsby-source-storyblok'
 import { graphql } from 'gatsby'
 import Layout from "@layout/index"
-import NottaLogo from '@/assets/images/nottaLogo.jpeg'
-import AirgramLogo from '@/assets/images/airgramLogo.jpeg'
+import NottaLogo from '@/assets/images/nottalogo.jpeg'
+import AirgramLogo from '@/assets/images/airgramlogo.jpeg'
 import IndexPageHero from "@/assets/images/IndexPageHero.jpeg"
 import { Box, Button, Center, Flex, Image, Link, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
 interface IProp {
