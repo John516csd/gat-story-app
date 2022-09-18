@@ -35,6 +35,7 @@ const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
       needChangeSlug = false;
     }
   }
+  console.log("🚀 ~ file: index.tsx ~ line 31 ~ needChangeSlug", needChangeSlug)
   return <ChakraLink href={needChangeSlug ? data.slug : data.full_slug}>
     <Center border="1px solid #eaedf0" flexDir="column" borderRadius="10px">
       <Image src={'https:' + cover} w="full" h="200px" borderTopRadius="10px" />
