@@ -114,6 +114,7 @@ const Layout: React.FC<IProps> = ({
             const script = document.createElement('script');
             script.src = "https://accounts.google.com/gsi/client";
             script.id = "google-one-tap";
+            script.async = true;
             document.body.appendChild(script);
             script.onload = () => {
                 // @ts-ignore
