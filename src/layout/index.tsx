@@ -5,12 +5,17 @@ import {
     theme, ColorModeProvider, useColorMode,
     useColorModeValue, Button,
     IconButton,
+    Image,
+    Flex,
+    Center
 } from "@chakra-ui/react";
 import { GatsbyLink } from "@/components/common/index";
 import { SunIcon, MoonIcon, AtSignIcon } from '@chakra-ui/icons'
 import Header from './Header'
 const { useState, useEffect } = React;
 import Nav from './Header/nav'
+import jwtDecode from "jwt-decode";
+import Profiles from "./Header/profiles"
 
 import yBlogTheme from "../assets/theme"
 import Footer from "./Footer";
@@ -27,6 +32,14 @@ interface IProps {
     px?: string;
     margin?: string;
     isNewStyle?: boolean;
+}
+
+interface IUserInfo {
+    picture: string,
+    email: string,
+    family_name: string,
+    given_name: string,
+    name: string
 }
 
 const getPaddingTop = (isNewStyle: boolean) =>
@@ -90,11 +103,49 @@ const Layout: React.FC<IProps> = ({
     const ToggleIcon = useColorModeValue(SunIcon, MoonIcon);
     const hoverBG = useColorModeValue('rgba(0, 0, 0, 0.08)', 'rgba(255, 255, 255, 0.08)');
     let googleLoginRes;
-    if(typeof window !== 'undefined') {
-        googleLoginRes = window.localStorage.getItem('google-login') || undefined;
+    if (typeof window !== 'undefined') {
+        googleLoginRes = window.sessionStorage.getItem('google-login') || undefined;
     }
-    const [isLogin, setIsLogin] = useState(typeof googleLoginRes !== 'undefined');
+    const [userInfo, setUserInfo] = useState<IUserInfo>(typeof googleLoginRes !== 'undefined' ? JSON.parse(googleLoginRes) : null);
 
+    const googleOneTapLogin = () => {
+        const existingScript = document.getElementById('google-one-tap');
+        if (!existingScript) {
+            const script = document.createElement('script');
+            script.src = "https://accounts.google.com/gsi/client";
+            script.id = "google-one-tap";
+            document.body.appendChild(script);
+            script.onload = () => {
+                // @ts-ignore
+                google.accounts.id.initialize({
+                    client_id: "607512424005-ulmn4n12r7a5cq4v0oeggpb2k1najbj3.apps.googleusercontent.com",
+                    callback: (res) => {
+                        const userInfo = jwtDecode(res.credential);
+                        setUserInfo(userInfo as IUserInfo);
+                        if (typeof window !== 'undefined') {
+                            window.sessionStorage.setItem('google-login', JSON.stringify(userInfo));
+                        }
+                    },
+                    auto_select: true,
+                });
+                // @ts-ignore
+                google.accounts.id.prompt();
+            }
+        }
+    }
+
+    const googleOneTapLogout = () => {
+        setUserInfo(null);
+        if (typeof window !== 'undefined') {
+            window.sessionStorage.removeItem('google-login');
+        }
+    }
+
+    useEffect(() => {
+        if (!userInfo) {
+            googleOneTapLogin();
+        }
+    })
     return (
         <ChakraProvider resetCSS theme={yBlogTheme}>
             <Box>
@@ -122,13 +173,18 @@ const Layout: React.FC<IProps> = ({
                     justifyContent="space-between"
                 >
                     <Nav />
-                    <IconButton
-                        icon={<ToggleIcon />}
-                        aria-label={"toggle"}
-                        onClick={toggleColorMode}
-                        _hover={{ bg: hoverBG }}
-                        bg={hoverBG}
-                    />
+                    <Center gap="24px">
+                        {
+                            userInfo && <Profiles userInfo={userInfo} googleLogout={googleOneTapLogout} />
+                        }
+                        <IconButton
+                            icon={<ToggleIcon />}
+                            aria-label={"toggle"}
+                            onClick={toggleColorMode}
+                            _hover={{ bg: hoverBG }}
+                            bg={hoverBG}
+                        />
+                    </Center>
                 </Box>
                 <Box px={px}>
                     <Box pt={pt} minW={minW} maxW={maxW} minH={minH} margin={margin}>
