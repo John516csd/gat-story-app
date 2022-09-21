@@ -12,3 +12,8 @@ declare module "*.svg" {
   const url: string;
   export default url;
 }
+
+declare interface Window {
+  Intercom: any;
+  google: any;
+}

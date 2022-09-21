@@ -19,6 +19,7 @@ import Profiles from "./Header/profiles"
 
 import yBlogTheme from "../assets/theme"
 import Footer from "./Footer";
+import useGoogleOneTap from "@/hooks/useGoogleOneTap";
 
 interface IProps {
     children: React.ReactNode;
@@ -108,32 +109,13 @@ const Layout: React.FC<IProps> = ({
     }
     const [userInfo, setUserInfo] = useState<IUserInfo>(typeof googleLoginRes !== 'undefined' ? JSON.parse(googleLoginRes) : null);
 
-    const googleOneTapLogin = () => {
-        const existingScript = document.getElementById('google-one-tap');
-        if (!existingScript) {
-            const script = document.createElement('script');
-            script.src = "https://accounts.google.com/gsi/client";
-            script.id = "google-one-tap";
-            script.async = true;
-            document.body.appendChild(script);
-            script.onload = () => {
-                // @ts-ignore
-                google.accounts.id.initialize({
-                    client_id: "607512424005-ulmn4n12r7a5cq4v0oeggpb2k1najbj3.apps.googleusercontent.com",
-                    callback: (res) => {
-                        const userInfo = jwtDecode(res.credential);
-                        setUserInfo(userInfo as IUserInfo);
-                        if (typeof window !== 'undefined') {
-                            window.sessionStorage.setItem('google-login', JSON.stringify(userInfo));
-                        }
-                    },
-                    auto_select: true,
-                });
-                // @ts-ignore
-                google.accounts.id.prompt();
-            }
+    useGoogleOneTap(({ credential }) => {
+        const userInfo = jwtDecode(credential);
+        setUserInfo(userInfo as IUserInfo);
+        if (typeof window !== 'undefined') {
+            window.sessionStorage.setItem('google-login', JSON.stringify(userInfo));
         }
-    }
+    })
 
     const googleOneTapLogout = () => {
         setUserInfo(null);
@@ -142,11 +124,6 @@ const Layout: React.FC<IProps> = ({
         }
     }
 
-    useEffect(() => {
-        if (!userInfo) {
-            googleOneTapLogin();
-        }
-    })
     return (
         <ChakraProvider resetCSS theme={yBlogTheme}>
             <Box>
