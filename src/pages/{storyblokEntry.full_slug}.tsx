@@ -30,7 +30,6 @@ const App: React.FC<IProp> = ({ data, location }) => {
   const color = useColorModeValue('#000', '#fff');
   const { content } = story;
   const {
-    table,
     cover,
     Rich_Content
   } = content;
