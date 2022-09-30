@@ -25,30 +25,16 @@ export const Head = () => {
 }
 
 const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
-  const content = data.content && JSON.parse(data.content);
-  const { Title, author, cover } = content;
-  let needChangeSlug = false;
-  if (typeof window !== 'undefined') {
-    if (window.location.href[window.location.href.length - 1] === '/') {
-      needChangeSlug = true;
-    } else {
-      needChangeSlug = false;
-    }
-  }
-  console.log("🚀 ~ file: index.tsx ~ line 31 ~ needChangeSlug", needChangeSlug)
-  return <ChakraLink href={needChangeSlug ? data.slug : data.full_slug}>
+  return <ChakraLink >
     <Center border="1px solid #eaedf0" flexDir="column" borderRadius="10px">
-      <Image src={'https:' + cover} w="full" h="200px" borderTopRadius="10px" />
-      <Center flexDir="column" p="12px" borderTop="1px solid #f1f1f1" w="full" >
-        <Text as="h4">{Title}</Text>
-        <Text as="h4">@{author}</Text>
-      </Center>
+
     </Center>
   </ChakraLink>
 }
 
 const Blog: React.FC<IProp> = ({ data, location }) => {
-  const { nodes } = data.allStoryblokEntry;
+  console.log("🚀 ~ file: index.tsx ~ line 51 ~ data", data)
+  const { nodes } = data.allMarkdownRemark;
   return <Layout>
     <Text as="h1">Blogs</Text>
     <Grid
@@ -65,8 +51,9 @@ const Blog: React.FC<IProp> = ({ data, location }) => {
     >
       {
         nodes.map((item) => {
-          return <GridItem key={item.full_slug}>
-            <BlogCard data={item} />
+          return <GridItem key={item.id}>
+            {/* <BlogCard data={item} /> */}
+            {item.frontmatter.title}
           </GridItem>
         })
       }
@@ -74,18 +61,22 @@ const Blog: React.FC<IProp> = ({ data, location }) => {
   </Layout>
 }
 
-export const query = graphql`
-  query TemplateQuery {
-    allStoryblokEntry(filter: { field_component: { eq: "page" } }) {
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark {
+      totalCount
       nodes {
-        slug
-        full_slug
-        content
+        frontmatter {
+          date
+          description
+          title
+        }
         id
+        rawMarkdownBody
       }
     }
   }
-`;
+`
 
 
 export default Blog;

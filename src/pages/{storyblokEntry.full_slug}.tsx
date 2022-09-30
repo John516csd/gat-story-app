@@ -37,14 +37,14 @@ const App: React.FC<IProp> = ({ data, location }) => {
   const { colorMode } = useColorMode();
 
   return <Layout>
-    <Center>
+    {/* <Center>
       <Image src={'https:' + cover} w="full" borderRadius="12px" />
     </Center>
     <Center w="full">
       <Box p="24px" className="cms-html" color={color} dangerouslySetInnerHTML={{
         __html: StoryBlok.richTextResolver.render(Rich_Content)
       }}></Box>
-    </Center>
+    </Center> */}
     <Center w="full" p="24px">
       <div
         style={{
