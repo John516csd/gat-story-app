@@ -25,7 +25,6 @@ export const Head = () => {
 
 const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
   const content = JSON.parse(data.content);
-  console.log("🚀 ~ file: index.tsx ~ line 28 ~ content", content)
   const { Title, author, cover } = content;
   return <ChakraLink href={data.full_slug}>
     <Center border="1px solid #eaedf0" flexDir="column" borderRadius="10px">
