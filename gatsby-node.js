@@ -16,22 +16,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
+        allMarkdownRemark(sort: {fields: [frontmatter___date], order: ASC}, limit: 1000) {
           nodes {
             id
             fields {
               slug
             }
+            html
           }
+          totalCount
         }
       }
     `
   )
   console.log("🚀 ~ file: gatsby-node.js ~ line 32 ~ exports.createPages= ~ result", result)
-  
+
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -49,7 +48,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
+      const data = post.html;
 
       createPage({
         path: post.fields.slug,
@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
+          data,
         },
       })
     })

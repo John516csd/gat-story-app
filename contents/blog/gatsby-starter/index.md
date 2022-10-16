@@ -1,7 +1,8 @@
 ---
 title: Gatsby
 date: "2015-05-01T22:12:03.284Z"
-description: "Gatsby"
+description: "This is a about gatsby blog."
+author: "yanchenhao"
 ---
 
 # Gatsby
@@ -153,13 +154,11 @@ module.exports = {
 
 Gatsby定义了特定的语法用来方便用户在/src/pages中创建动态路由页面，命名规则为{xxx.xxx}.js
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/28e9e9d8-c0ac-44a7-aca1-2e4b3a754160/Untitled.png)
-
 注意名称要相同
 
 Gatsby会根据你query的数据来生成页面，当你404的时候，就会展示现在网站现有的页面路由
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a4bfda41-1d0e-4e95-b67b-3d75ebac2c80/Untitled.png)
+![Untitled](https://i.postimg.cc/3w386gVh/Wechat-IMG42.png)
 
 ## 切换主题
 

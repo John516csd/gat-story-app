@@ -9,6 +9,7 @@ import AirgramLogo from '@/assets/images/airgramlogo.jpeg'
 import IndexPageHero from "@/assets/images/IndexPageHero.jpeg"
 import { Box, Button, Center, Flex, Image, Link, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import GameBlock from '@components/common/GameBlock'
+import GrowNumber from "@/components/animations/grow-number"
 interface IProp {
   data: any
 }
@@ -37,6 +38,10 @@ const IndexPage = ({ data }: IProp) => {
   return (
     <Layout isNewStyle>
       <Text as="h1" my="40px">🎯 Documenting Life & Technology</Text>
+      <GrowNumber number={300} numberStyle={{
+        fontSize: "20px",
+        fontWeight: "600"
+      }}/>
       <Center borderRadius="12px">
         <GameBlock />
       </Center>

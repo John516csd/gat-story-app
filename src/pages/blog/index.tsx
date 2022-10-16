@@ -4,6 +4,7 @@ import Header from "@components/head";
 import { graphql } from "gatsby";
 import React, { useEffect } from "react"
 import { Center, Image, Text, Link as ChakraLink, Grid, GridItem } from '@chakra-ui/react'
+import { GatsbyLink } from "@/components/common";
 
 interface IProp {
   data: any,
@@ -12,9 +13,15 @@ interface IProp {
 
 interface IBlogCardProp {
   data: {
-    slug: string,
-    full_slug: string,
-    content: string,
+    fields: {
+      slug: string
+    },
+    frontmatter: {
+      date: string
+      description: string
+      title: string
+      author: string
+    }
   }
 }
 
@@ -25,11 +32,20 @@ export const Head = () => {
 }
 
 const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
-  return <ChakraLink >
-    <Center border="1px solid #eaedf0" flexDir="column" borderRadius="10px">
-
+  console.log("🚀 ~ file: index.tsx ~ line 29 ~ data", data)
+  return <GatsbyLink to={data.fields.slug} w="full">
+    <Center
+      w="full"
+      flexDir="column"
+      p="24px"
+      justifyContent="flex-start"
+    >
+      <Text as="h3">{data.frontmatter.title}</Text>
+      <Text style={{ margin: "6px" }}>{data.frontmatter.description}</Text>
+      <Text style={{ margin: "6px" }}>@{data.frontmatter.author}</Text>
+      <Text style={{ margin: "6px" }}>{data.frontmatter.date}</Text>
     </Center>
-  </ChakraLink>
+  </GatsbyLink>
 }
 
 const Blog: React.FC<IProp> = ({ data, location }) => {
@@ -38,6 +54,7 @@ const Blog: React.FC<IProp> = ({ data, location }) => {
   return <Layout>
     <Text as="h1">Blogs</Text>
     <Grid
+      w="full"
       gap="64px"
       mt="64px"
       gridTemplateColumns={{
@@ -45,15 +62,19 @@ const Blog: React.FC<IProp> = ({ data, location }) => {
         sm: "1fr 1fr",
         md: "1fr 1fr",
         lg: "1fr 1fr",
-        xl: "1fr 1fr",
+        xl: "1fr 1fr 1fr",
         "2xl": "1fr 1fr 1fr",
       }}
     >
       {
         nodes.map((item) => {
-          return <GridItem key={item.id}>
-            {/* <BlogCard data={item} /> */}
-            {item.frontmatter.title}
+          return <GridItem
+            w="full"
+            borderRadius="10px"
+            border="1px solid #eaedf0"
+            key={item.id}
+          >
+            <BlogCard data={item} />
           </GridItem>
         })
       }
@@ -70,9 +91,13 @@ export const pageQuery = graphql`
           date
           description
           title
+          author
         }
         id
         rawMarkdownBody
+        fields {
+          slug
+        }
       }
     }
   }
