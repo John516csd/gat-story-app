@@ -23,13 +23,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
             }
             html
+            internal {
+              content
+            }
           }
           totalCount
         }
       }
     `
   )
-  console.log("🚀 ~ file: gatsby-node.js ~ line 32 ~ exports.createPages= ~ result", result)
 
   if (result.errors) {
     reporter.panicOnBuild(
@@ -50,6 +52,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
       const data = post.html;
+      const title = post.fields.slug;
+      const markDown = post.internal.content;
 
       createPage({
         path: post.fields.slug,
@@ -59,6 +63,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           previousPostId,
           nextPostId,
           data,
+          title,
+          markDown,
         },
       })
     })
@@ -95,7 +101,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
-    console.log('>>> value', value);
     createNodeField({
       name: `slug`,
       node,

@@ -1,6 +1,6 @@
 ---
 title: Gatsby
-date: "2015-05-01T22:12:03.284Z"
+date: "2022-08-30"
 description: "This is a about gatsby blog."
 author: "yanchenhao"
 ---
@@ -32,17 +32,16 @@ author: "yanchenhao"
         title: "My First Gatsby Site",
       },
       plugins: ["plugin-name"],
+      // or 
+      // plugins: [
+      //    {
+      //      resolve: "plugin-name",
+      //      options: {
+      //        // Check the plugin README for what options go in here
+      //      }
+      //    },
+      // ]
     };
-    
-    or 
-    plugins: [
-        {
-          resolve: "plugin-name",
-          options: {
-            // Check the plugin README for what options go in here
-          }
-        },
-      ]
     ```
     
 3. 在项目中按照npm上文档的要求使用对应的plugin。

@@ -151,7 +151,7 @@ const Layout: React.FC<IProps> = ({
                     justifyContent="space-between"
                 >
                     <Nav />
-                    <Center gap="24px">
+                    <Center gap="24px" zIndex="99999">
                         {
                             userInfo && <Profiles userInfo={userInfo} googleLogout={googleOneTapLogout} />
                         }

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box, Button, Center, Flex, Image, Link, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import IndexPageHero from "@/assets/images/IndexPageHero.jpeg";
-import IndexPageGif from "@/assets/images/IndexPageGif.gif";
+// import IndexPageGif from "@/assets/images/IndexPageGif.gif";
 
 interface IProp {
     content?: React.ReactNode
@@ -48,7 +48,7 @@ const Example: React.FC<IProp> = ({ content }) => {
                     boxShadow="0 30px 60px -10px rgb(0 0 0 / 22%), 0 18px 36px -18px rgb(0 0 0 / 25%)"
                     className="home-cover"
                 >
-                    <Image h="full" w="full" objectFit="cover" src={IndexPageGif} borderRadius="12px" />
+                    <Image h="full" w="full" objectFit="cover" src={IndexPageHero} borderRadius="12px" />
                 </Center>
                 <motion.div
                     className="move-handler"

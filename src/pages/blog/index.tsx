@@ -32,7 +32,6 @@ export const Head = () => {
 }
 
 const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
-  console.log("🚀 ~ file: index.tsx ~ line 29 ~ data", data)
   return <GatsbyLink to={data.fields.slug} w="full">
     <Center
       w="full"
@@ -49,7 +48,6 @@ const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
 }
 
 const Blog: React.FC<IProp> = ({ data, location }) => {
-  console.log("🚀 ~ file: index.tsx ~ line 51 ~ data", data)
   const { nodes } = data.allMarkdownRemark;
   return <Layout>
     <Text as="h1">Blogs</Text>

@@ -26,7 +26,6 @@ const App: React.FC<IProp> = ({ data, location }) => {
   const StoryBlok = new StoryBlokClient({
     accessToken: process.env.GATSBY_STORYBLOCK_ACCESS_TOKEN
   })
-  console.log("🚀 ~ file: {storyblokEntry.full_slug}.tsx ~ line 14 ~ story", story);
   const color = useColorModeValue('#000', '#fff');
   const { content } = story;
   const {

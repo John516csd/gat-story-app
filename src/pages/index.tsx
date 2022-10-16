@@ -10,6 +10,7 @@ import IndexPageHero from "@/assets/images/IndexPageHero.jpeg"
 import { Box, Button, Center, Flex, Image, Link, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import GameBlock from '@components/common/GameBlock'
 import GrowNumber from "@/components/animations/grow-number"
+import FlowDown from "@/components/animations/flow-down"
 interface IProp {
   data: any
 }
@@ -42,6 +43,7 @@ const IndexPage = ({ data }: IProp) => {
         fontSize: "20px",
         fontWeight: "600"
       }}/> */}
+      {/* <FlowDown /> */}
       <Center borderRadius="12px">
         <GameBlock />
       </Center>
