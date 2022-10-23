@@ -1,7 +1,7 @@
 ---
 title: Gatsby
 date: "2022-08-30"
-description: "This is a about gatsby blog."
+description: "这是一篇关于Gatsby的文章。"
 author: "yanchenhao"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Accessibility
 date: "2022-10-23"
-description: "This is a about accessibility blog."
+description: "这是一篇关于无障碍的文章。"
 author: "yanchenhao"
 ---
 
