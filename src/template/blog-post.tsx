@@ -5,6 +5,7 @@ import Header from '@components/head'
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { Script } from "gatsby";
 interface IProp {
     pageContext: {
         data: string,
@@ -20,8 +21,8 @@ const Post: React.FC<IProp> = (data) => {
     const markDown = data.pageContext.markDown;
 
     return <Layout>
+        <Script src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="yanchenhaoblog.gatsbyjs.io"></Script>
         <Header title={title.replace(/\//g, '')} description={`${title} details`}>
-            <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="yanchenhaoblog.gatsbyjs.io"></script>
         </Header>
         <ReactMarkdown
             className="cms-html"
