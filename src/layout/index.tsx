@@ -109,13 +109,13 @@ const Layout: React.FC<IProps> = ({
     }
     const [userInfo, setUserInfo] = useState<IUserInfo>(typeof googleLoginRes !== 'undefined' ? JSON.parse(googleLoginRes) : null);
 
-    useGoogleOneTap(({ credential }) => {
-        const userInfo = jwtDecode(credential);
-        setUserInfo(userInfo as IUserInfo);
-        if (typeof window !== 'undefined') {
-            window.sessionStorage.setItem('google-login', JSON.stringify(userInfo));
-        }
-    })
+    // useGoogleOneTap(({ credential }) => {
+    //     const userInfo = jwtDecode(credential);
+    //     setUserInfo(userInfo as IUserInfo);
+    //     if (typeof window !== 'undefined') {
+    //         window.sessionStorage.setItem('google-login', JSON.stringify(userInfo));
+    //     }
+    // })
 
     const googleOneTapLogout = () => {
         setUserInfo(null);
