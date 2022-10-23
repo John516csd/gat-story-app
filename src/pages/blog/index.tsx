@@ -27,7 +27,11 @@ interface IBlogCardProp {
 
 export const Head = () => {
   return (
-    <Header title="blogs" />
+    <Header title="blogs">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+      </style>
+    </Header>
   )
 }
 
@@ -38,11 +42,12 @@ const BlogCard: React.FC<IBlogCardProp> = ({ data }) => {
       flexDir="column"
       p="24px"
       justifyContent="flex-start"
+      className="blog-card"
     >
-      <Text as="h3">{data.frontmatter.title}</Text>
-      <Text style={{ margin: "6px" }}>{data.frontmatter.description}</Text>
-      <Text style={{ margin: "6px" }}>@{data.frontmatter.author}</Text>
-      <Text style={{ margin: "6px" }}>{data.frontmatter.date}</Text>
+      <Text as="h3" className="blog-card-title">{data.frontmatter.title}</Text>
+      <Text style={{ margin: "6px" }}>📝 {data.frontmatter.description}</Text>
+      <Text style={{ margin: "6px" }}>🧑🏻‍💻 {data.frontmatter.author}</Text>
+      <Text style={{ margin: "6px", fontWeight: 300 }} as="span" display="inline-block" w="full">📆 {data.frontmatter.date}</Text>
     </Center>
   </GatsbyLink>
 }

@@ -20,10 +20,11 @@ const Post: React.FC<IProp> = (data) => {
     const markDown = data.pageContext.markDown;
 
     return <Layout>
-        <Header title={title} description={`${title} details`}>
+        <Header title={title.replace(/\//g, '')} description={`${title} details`}>
             <script defer src="https://chirpy.dev/bootstrap/comment.js" data-chirpy-domain="yanchenhaoblog.gatsbyjs.io"></script>
         </Header>
         <ReactMarkdown
+            className="cms-html"
             children={markDown}
             components={{
                 code({ node, inline, className, children, ...props }) {
